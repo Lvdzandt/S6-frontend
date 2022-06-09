@@ -1,18 +1,30 @@
 <template>
   <div>
-    <h1>Winkelwagen</h1>
+    <h1>User</h1>
     <div v-for="item in data" v-bind:key="item.id">
-      Naam: {{item.name}}
-      Prijs: {{item.price}}
     </div>
     <form @submit.prevent="submit">
-      <input type="text" v-model="name">
-      <input type="number" v-model="price">
+      <input type="text" v-model="username">
       <button type="submit">
         Submit
       </button>
     </form>
+
+    <div>
+      <h1>SubReddits</h1>
+      <div v-for="item in data" v-bind:key="item.id">
+        Naam: {{item.name}}
+        <button>Follow</button>
+      </div>
+      <form @submit.prevent="submitSubreddit">
+        <input type="text" v-model="name">
+        <button type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -23,23 +35,31 @@ export default {
   data: () =>({
     data: [],
     name: null,
+    username: null,
     price: null,
   }),
 
   methods : {
     submit(){
-      if(this.name != null && this.price != null)
-        axios.post('http://localhost:8081/item/',
+      if(this.name != null)
+        axios.post('http://localhost:8083/user/',
+            {
+              name:this.username,
+            })
+            .then(r => (console.log(r)))
+    },
+    submitSubreddit(){
+      if(this.name != null)
+        axios.post('http://localhost:8083/subreddit/',
             {
               name:this.name,
-              price:this.price
             })
             .then(r => (console.log(r)))
     }
   },
 
   mounted() {
-    axios.get('http://localhost:8081/item/')
+    axios.get('http://localhost:8083/subreddit/all')
         .then(r => (this.data = r.data))
   }
 
