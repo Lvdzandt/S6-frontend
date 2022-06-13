@@ -59,7 +59,7 @@ export default {
   },
 
   mounted() {
-    axios.get('10.43.161.188:8083/subreddit/all')
+    axios.get('http://10.43.161.188:8083/subreddit/all')
         .then(r => (this.data = r.data))
   }
 
