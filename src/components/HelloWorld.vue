@@ -50,7 +50,7 @@ export default {
     },
     submitSubreddit(){
       if(this.name != null)
-        axios.post('gateway-service/subreddit/',
+        axios.post('gateway-service:8083/subreddit/',
             {
               name:this.name,
             })
