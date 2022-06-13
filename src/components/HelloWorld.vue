@@ -59,7 +59,7 @@ export default {
   },
 
   mounted() {
-    axios.get('gateway-service/subreddit/all')
+    axios.get('http://gateway-service/subreddit/all')
         .then(r => (this.data = r.data))
   }
 
