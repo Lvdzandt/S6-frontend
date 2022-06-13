@@ -42,7 +42,7 @@ export default {
   methods : {
     submit(){
       if(this.name != null)
-        axios.post('http://gateway-service/user/',
+        axios.post('http://10.43.161.188:8083/user/',
             {
               name:this.username,
             })
