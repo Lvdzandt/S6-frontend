@@ -42,7 +42,7 @@ export default {
   methods : {
     submit(){
       if(this.name != null)
-        axios.post('gateway-service/user/',
+        axios.post('http://gateway-service/user/',
             {
               name:this.username,
             })
@@ -59,7 +59,7 @@ export default {
   },
 
   mounted() {
-    axios.get('gateway-service/subreddit/all')
+    axios.get('10.43.161.188:8083/subreddit/all')
         .then(r => (this.data = r.data))
   }
 
