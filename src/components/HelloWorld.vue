@@ -42,7 +42,7 @@ export default {
   methods : {
     submit(){
       if(this.name != null)
-        axios.post('http://10.43.161.188:8083/user/',
+        axios.post('http://gateway/user/',
             {
               name:this.username,
             })
@@ -50,7 +50,7 @@ export default {
     },
     submitSubreddit(){
       if(this.name != null)
-        axios.post('gateway-service/subreddit/',
+        axios.post('gateway/subreddit/',
             {
               name:this.name,
             })
@@ -59,7 +59,7 @@ export default {
   },
 
   mounted() {
-    axios.get('http://10.43.161.188:8083/subreddit/all')
+    axios.get('http://gateway:8083/subreddit/all')
         .then(r => (this.data = r.data))
   }
 
