@@ -3,7 +3,7 @@
     <h1>User</h1>
     <div v-for="item in data" v-bind:key="item.id">
     </div>
-    <form @submit.prevent="submit">
+    <form @submit.prevent="submitUser">
       <input type="text" v-model="username">
       <button type="submit">
         Submit
@@ -29,7 +29,7 @@
 
 <script>
 
-import axios from "axios";
+import {mapActions} from 'vuex'
 
 export default {
   data: () =>({
@@ -40,27 +40,31 @@ export default {
   }),
 
   methods : {
-    submit(){
-      if(this.name != null)
-        axios.post('http://10.42.1.65:8083/user/',
-            {
-              name:this.username,
-            })
-            .then(r => (console.log(r)))
+    ...mapActions([
+       "fetchAllSubreddits","createUser","createSubreddit"
+    ]),
+    submitUser(){
+      if(this.name != null){
+      this.createUser(this.username);
+      }
     },
     submitSubreddit(){
-      if(this.name != null)
-        axios.post('10.42.1.65:8083/subreddit/',
-            {
-              name:this.name,
-            })
-            .then(r => (console.log(r)))
+      if(this.name != null) {
+      this.createSubreddit(this.name);
+      }
+    },
+    fetchSubreddits(){
+      return
+      // eslint-disable-next-line no-unreachable
+      this.fetchAllSubreddits().then((res) => {
+        console.log(res);
+        this.data = res;
+      })
     }
   },
 
   mounted() {
-    axios.get('http://10.42.1.65:8083/subreddit/all')
-        .then(r => (this.data = r.data))
+    this.fetchSubreddits();
   }
 
 

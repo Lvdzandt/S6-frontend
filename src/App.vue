@@ -1,18 +1,8 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo.png"/>
+  <Home/>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
 <style>
 #app {
@@ -24,3 +14,9 @@ export default {
   margin-top: 60px;
 }
 </style>
+<script>
+import Home from "./view/home.vue"
+export default {
+  components: {Home}
+}
+</script>
