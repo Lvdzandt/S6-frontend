@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-    baseURL: "http://gateway-service/subreddit",
+    baseURL: "http://gateway-service:8083/subreddit",
     withCredentials: false, // This is the default
     headers: {
         Accept: "application/json",
