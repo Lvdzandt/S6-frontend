@@ -1,11 +1,12 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-    baseURL: "http://localhost:9080/subreddit",
+    baseURL: process.env.VUE_APP_BASE_URL+"subreddit",
     withCredentials: false, // This is the default
     headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
     },
 });
 

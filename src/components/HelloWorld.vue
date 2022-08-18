@@ -9,7 +9,6 @@
         Submit
       </button>
     </form>
-
     <div>
       <h1>SubReddits</h1>
       <div v-for="item in data" v-bind:key="item.id">
@@ -44,7 +43,7 @@ export default {
        "fetchAllSubreddits","createUser","createSubreddit"
     ]),
     submitUser(){
-      if(this.name != null){
+      if(this.username != null){
       this.createUser(this.username);
       }
     },
@@ -54,12 +53,13 @@ export default {
       }
     },
     fetchSubreddits(){
-      return
-      // eslint-disable-next-line no-unreachable
       this.fetchAllSubreddits().then((res) => {
         console.log(res);
         this.data = res;
       })
+    },
+    get(){
+      this.fetchAllSubreddits();
     }
   },
 

@@ -4,14 +4,23 @@ import SubredditService from "@/services/SubredditService";
 
 export default new Vuex.Store({
     state: {
-        todo: {},
-        expense: {},
+        subreddit: {},
+        user: {},
+    },
+    mutations: {
+        SET_SUBREDDIT(state, subreddit){
+            state.subreddit = subreddit;
+        },
+        SET_USER(state, user){
+            state.user = user;
+        }
     },
     actions: {
-        createUser(name) {
+        createUser({commit}, name) {
             console.log("name store: " + name)
             return UserService.postUser(name)
                 .then((response) => {
+                    commit("SET_USER", response)
                     return response;
                 })
                 .catch((error) => {
@@ -27,10 +36,11 @@ export default new Vuex.Store({
                     console.log(error);
                 });
         },
-        createSubreddit(name) {
+        createSubreddit({commit}, name) {
             console.log("expense name: " + name)
             return SubredditService.postSubreddit(name)
                 .then((response) => {
+                    commit("SET_SUBREDDIT", response)
                     return response;
                 })
                 .catch((error) => {
