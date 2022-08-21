@@ -30,12 +30,14 @@
 
 import {mapActions} from 'vuex'
 
+
 export default {
   data: () =>({
     data: [],
     name: null,
     username: null,
     price: null,
+    token: ""
   }),
 
   methods : {

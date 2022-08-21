@@ -7,6 +7,7 @@
 
 <script>
 import HelloWorld from "@/components/HelloWorld";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "home.vue",
