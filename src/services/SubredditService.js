@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getToken } from '@baloise/vue-keycloak'
 
 
 const apiClient = axios.create({
@@ -15,15 +14,12 @@ const apiClient = axios.create({
 
 export default {
     async postSubreddit(data) {
-        const token = await getToken();
-        console.log("expense: " + data + " token: " + token);
+        console.log("expense: " + data);
         return await apiClient
             .post("/", data)
             .then((response) => response.data);
     },
     async fetchAllSubreddits(){
-        const token = await getToken();
-        console.log("token: " + token);
         return await apiClient
             .get("/all")
             .then((response) => response.data);
